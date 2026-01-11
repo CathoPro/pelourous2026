@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-2xl mx-auto bg-white p-10 rounded-lg shadow-lg text-center border-t-8 border-pel-vert">
+    <h1 class="text-4xl font-bold text-pel-vert mb-4">Félicitations !</h1>
+    <p class="text-xl text-gray-600 mb-8">Votre inscription au Pèlerinage 2026 est confirmée.</p>
+    
+    <div class="bg-gray-50 p-6 rounded border border-gray-200 inline-block mb-6">
+        <p class="font-bold mb-2">Votre Code Pèlerin</p>
+        <div class="w-48 h-48 bg-gray-200 mx-auto flex items-center justify-center">
+            {% if pelerin.qr_code %}
+            <img src="{{ pelerin.qr_code.url }}" alt="QR Code" class="w-full h-full">
+            {% else %}
+            <p>QR Code en cours...</p>
+            {% endif %}
+        </div>
+        <p class="mt-2 text-sm text-gray-500">{{ pelerin.nom }} {{ pelerin.prenom }}</p>
+    </div>
+
+    <div class="alert bg-yellow-100 text-yellow-800 p-4 rounded text-sm">
+        Veuillez faire une capture d'écran de cette page ou télécharger votre reçu. 
+        Présentez ce QR Code au secrétariat pour récupérer votre kit.
+    </div>
+    
+    <div class="mt-8 flex justify-center gap-4">
+        <button onclick="window.print()" class="bg-pel-bleu text-white px-6 py-2 rounded">Imprimer / PDF</button>
+        <a href="/" class="text-pel-vert underline self-center">Retour à l'accueil</a>
+    </div>
+</div>
+{% endblock %}
