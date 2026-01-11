@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg text-center">
+    <h2 class="text-2xl font-bold text-pel-bleu mb-4">Paiement Sécurisé</h2>
+    <p class="mb-6">Merci {{ pelerin.prenom }}. Veuillez régler les frais d'inscription.</p>
+    
+    <div class="bg-gray-100 p-4 rounded mb-6 text-left">
+        <p class="font-bold">Moyens acceptés :</p>
+        <ul class="list-disc pl-5 text-sm">
+            <li>Orange Money</li>
+            <li>Mobile Money</li>
+            <li>PayCard</li>
+        </ul>
+    </div>
+
+    <form method="POST" class="space-y-4">
+        {% csrf_token %}
+        <select name="mode_paiement" class="w-full border p-2 rounded">
+            <option value="OM">Orange Money</option>
+            <option value="MOMO">MTN Mobile Money</option>
+            <option value="PAYCARD">PayCard</option>
+        </select>
+        
+        <input type="text" name="reference" placeholder="Saisissez la référence de transaction ici" required class="w-full border-2 border-pel-jaune p-2 rounded">
+        
+        <button type="submit" class="w-full bg-pel-bleu text-white font-bold py-3 rounded hover:bg-blue-600 transition">
+            Confirmer le Paiement
+        </button>
+    </form>
+</div>
+{% endblock %}
