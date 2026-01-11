@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pélourous 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pel-bleu': '#1f91f2',
+                        'pel-vert': '#0b5232',
+                        'pel-jaune': '#f9dd1a',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+    <nav class="bg-pel-vert p-4 text-white shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold flex items-center gap-2">
+                <span class="text-pel-jaune">✝</span> PÉLOUROUS 2026
+            </a>
+            <div class="space-x-4">
+                <a href="{% url 'inscription' %}" class="hover:text-pel-jaune transition">S'inscrire</a>
+                <a href="/admin" class="hover:text-pel-jaune transition">Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4 flex-grow">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-pel-vert text-white text-center p-4 mt-8">
+        <p>&copy; 2026 Pèlerinage Diocésain - Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
